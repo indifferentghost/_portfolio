@@ -22,6 +22,9 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount() {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
     this.timeoutId = setTimeout(() => {
       this.setState({ loading: '' });
     }, 100);
