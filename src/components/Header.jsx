@@ -1,8 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// This is temporary just to progress the MVP.
+/* eslint-disable no-script-url */
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = props => (
-  <header id="header" style={props.timeout ? { display: 'none' } : {}}>
+const Header = ({ timeout, onOpenArticle }) => (
+  <header id="header" style={timeout ? { display: 'none' } : {}}>
     <div className="logo">
       <span className="icon fa-diamond" />
     </div>
@@ -24,7 +26,7 @@ const Header = props => (
           <a
             href="javascript:;"
             onClick={() => {
-              props.onOpenArticle('intro')
+              onOpenArticle('intro');
             }}
           >
             Intro
@@ -34,7 +36,7 @@ const Header = props => (
           <a
             href="javascript:;"
             onClick={() => {
-              props.onOpenArticle('work')
+              onOpenArticle('work');
             }}
           >
             Work
@@ -44,7 +46,7 @@ const Header = props => (
           <a
             href="javascript:;"
             onClick={() => {
-              props.onOpenArticle('about')
+              onOpenArticle('about');
             }}
           >
             About
@@ -54,7 +56,7 @@ const Header = props => (
           <a
             href="javascript:;"
             onClick={() => {
-              props.onOpenArticle('contact')
+              onOpenArticle('contact');
             }}
           >
             Contact
@@ -63,11 +65,11 @@ const Header = props => (
       </ul>
     </nav>
   </header>
-)
+);
 
 Header.propTypes = {
   onOpenArticle: PropTypes.func,
   timeout: PropTypes.bool,
-}
+};
 
-export default Header
+export default Header;
