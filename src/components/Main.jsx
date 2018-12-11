@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import pic01 from '../images/pic01.jpg';
 import pic02 from '../images/pic02.jpg';
@@ -32,9 +33,7 @@ class Main extends React.Component {
       >
         <article
           id="intro"
-          className={`${article === 'intro' ? 'active' : ''} ${
-            articleTimeout ? 'timeout' : ''
-          }`}
+          className={classNames({ active: article === 'intro', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
           <h2 className="major">Intro</h2>
@@ -66,9 +65,7 @@ class Main extends React.Component {
 
         <article
           id="work"
-          className={`${article === 'work' ? 'active' : ''} ${
-            articleTimeout ? 'timeout' : ''
-          }`}
+          className={classNames({ active: article === 'work', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
           <h2 className="major">Work</h2>
@@ -95,9 +92,7 @@ class Main extends React.Component {
 
         <article
           id="about"
-          className={`${article === 'about' ? 'active' : ''} ${
-            articleTimeout ? 'timeout' : ''
-          }`}
+          className={classNames({ active: article === 'about', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
           <h2 className="major">About</h2>
@@ -118,9 +113,7 @@ class Main extends React.Component {
 
         <article
           id="contact"
-          className={`${article === 'contact' ? 'active' : ''} ${
-            articleTimeout ? 'timeout' : ''
-          }`}
+          className={classNames({ active: article === 'contact', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>

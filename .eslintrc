@@ -4,14 +4,15 @@
     "es6": true,
     "browser": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     }
   },
-  "plugins": ["prettier"],
+  "plugins": ["babel"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "react/jsx-one-expression-per-line": 0,
