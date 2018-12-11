@@ -1,33 +1,41 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import pic01 from "../images/pic01.jpg";
-import pic02 from "../images/pic02.jpg";
-import pic03 from "../images/pic03.jpg";
+import pic01 from '../images/pic01.jpg';
+import pic02 from '../images/pic02.jpg';
+import pic03 from '../images/pic03.jpg';
 
 class Main extends React.Component {
   render() {
-    let close = (
+    const {
+      onCloseArticle,
+      setWrapperRef,
+      timeout,
+      article,
+      articleTimeout,
+    } = this.props;
+
+    const close = (
       <div
         className="close"
         onClick={() => {
-          this.props.onCloseArticle();
+          onCloseArticle();
         }}
       />
     );
 
     return (
       <div
-        ref={this.props.setWrapperRef}
+        ref={setWrapperRef}
         id="main"
-        style={this.props.timeout ? { display: "flex" } : { display: "none" }}
+        style={{ display: timeout ? 'flex' : 'none' }}
       >
         <article
           id="intro"
-          className={`${this.props.article === "intro" ? "active" : ""} ${
-            this.props.articleTimeout ? "timeout" : ""
+          className={`${article === 'intro' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         >
           <h2 className="major">Intro</h2>
           <span className="image main">
@@ -58,10 +66,10 @@ class Main extends React.Component {
 
         <article
           id="work"
-          className={`${this.props.article === "work" ? "active" : ""} ${
-            this.props.articleTimeout ? "timeout" : ""
+          className={`${article === 'work' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         >
           <h2 className="major">Work</h2>
           <span className="image main">
@@ -87,10 +95,10 @@ class Main extends React.Component {
 
         <article
           id="about"
-          className={`${this.props.article === "about" ? "active" : ""} ${
-            this.props.articleTimeout ? "timeout" : ""
+          className={`${article === 'about' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         >
           <h2 className="major">About</h2>
           <span className="image main">
@@ -110,10 +118,10 @@ class Main extends React.Component {
 
         <article
           id="contact"
-          className={`${this.props.article === "contact" ? "active" : ""} ${
-            this.props.articleTimeout ? "timeout" : ""
+          className={`${article === 'contact' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>
           <form method="post" action="#">
@@ -168,12 +176,12 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  route: PropTypes.object,
+  // route: PropTypes.object,
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
   timeout: PropTypes.bool,
-  setWrapperRef: PropTypes.func.isRequired
+  setWrapperRef: PropTypes.func.isRequired,
 };
 
 export default Main;
