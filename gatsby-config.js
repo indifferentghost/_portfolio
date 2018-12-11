@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter - Dimension V2',
-    author: 'Hunter Chang',
-    description: 'A Gatsby.js V2 Starter based on Dimension by HTML5 UP',
+    title: 'Portfolio - Thomas Dillard',
+    author: 'Thomas Dillard',
+    description: 'The online portfolio of React developer, Thomas Dillard.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
