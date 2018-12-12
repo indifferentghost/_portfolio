@@ -7,6 +7,28 @@ import pic02 from '../images/pic02.jpg';
 import pic03 from '../images/pic03.jpg';
 
 class Main extends React.Component {
+  componentDidMount() {
+    const { routing } = this;
+    window.addEventListener('hashchange', routing);
+  }
+
+  componentWillUnmount() {
+    const { routing } = this;
+    window.removeEventListener('hashchange', routing);
+  }
+
+  routing = () => {
+    const {
+      article,
+      onCloseArticle,
+      onOpenArticle,
+    } = this.props;
+    if (!window.location.hash.includes(article)) {
+      onCloseArticle();
+      setTimeout(() => onOpenArticle(window.location.hash.slice(1)), 400);
+    }
+  }
+
   render() {
     const {
       onCloseArticle,
@@ -30,11 +52,11 @@ class Main extends React.Component {
         style={{ display: timeout ? 'flex' : 'none' }}
       >
         <article
-          id="intro"
-          className={classNames({ active: article === 'intro', timeout: articleTimeout })}
+          id="about"
+          className={classNames({ active: article === 'about', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Intro</h2>
+          <h2 className="major">About</h2>
           <span className="image main">
             <img src={pic01} alt="" />
           </span>
@@ -62,11 +84,11 @@ class Main extends React.Component {
         </article>
 
         <article
-          id="work"
-          className={classNames({ active: article === 'work', timeout: articleTimeout })}
+          id="projects"
+          className={classNames({ active: article === 'projects', timeout: articleTimeout })}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Work</h2>
+          <h2 className="major">Projects</h2>
           <span className="image main">
             <img src={pic02} alt="" />
           </span>
@@ -84,27 +106,6 @@ class Main extends React.Component {
             Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
             libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat
             tempus.
-          </p>
-          {close}
-        </article>
-
-        <article
-          id="about"
-          className={classNames({ active: article === 'about', timeout: articleTimeout })}
-          style={{ display: 'none' }}
-        >
-          <h2 className="major">About</h2>
-          <span className="image main">
-            <img src={pic03} alt="" />
-          </span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent
-            eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam
-            erat volutpat. Praesent urna nisi, fringila lorem et vehicula
-            lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.
-            Aliquam libero et malesuada fames ac ante ipsum primis in faucibus.
-            Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit
-            amet.
           </p>
           {close}
         </article>

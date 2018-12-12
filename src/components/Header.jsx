@@ -3,6 +3,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const NavLink = (page, clickHandler) => (
+  <li>
+    <a
+      href={`#${page}`}
+      onClick={() => clickHandler(page)}
+    >
+      {page}
+    </a>
+  </li>
+);
+
 const Header = ({ timeout, onOpenArticle }) => (
   <header id="header" style={timeout ? { display: 'none' } : {}}>
     <div className="logo">
@@ -12,54 +23,28 @@ const Header = ({ timeout, onOpenArticle }) => (
       <div className="inner">
         <h1>Thomas Dillard</h1>
         <p>
-          The fully responsive portfolio{' '}
-          of Thomas Dillard.{' '}
-          <a href="https://html5up.net">HTML5 UP</a> and released{' '}<br />
-          for free under the{' '}
-          <a href="https://html5up.net/license">Creative Commons</a> license.
+          The fully responsive portfolio of Thomas Dillard.{' '}<br />
+          A full stack React developer, involved in{' '}<br />
+          and passionate about Open Source.{' '}<br />
+          <br />
+          a{' '}
+          <a
+            href="https://lambdaschool.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Lambda School
+          </a>{' '}
+          alumnus and hype man.
         </p>
       </div>
     </div>
     <nav>
       <ul>
+        {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
         <li>
-          <a
-            href="javascript:;"
-            onClick={() => {
-              onOpenArticle('intro');
-            }}
-          >
-            Intro
-          </a>
-        </li>
-        <li>
-          <a
-            href="javascript:;"
-            onClick={() => {
-              onOpenArticle('work');
-            }}
-          >
-            Work
-          </a>
-        </li>
-        <li>
-          <a
-            href="javascript:;"
-            onClick={() => {
-              onOpenArticle('about');
-            }}
-          >
-            About
-          </a>
-        </li>
-        <li>
-          <a
-            href="javascript:;"
-            onClick={() => {
-              onOpenArticle('contact');
-            }}
-          >
-            Contact
+          <a href="../files/Thomas_Dillard-Resume_121018.pdf">
+            Resume
           </a>
         </li>
       </ul>

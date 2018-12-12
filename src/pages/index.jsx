@@ -64,6 +64,10 @@ class IndexPage extends React.Component {
     }, 325);
 
     setTimeout(() => {
+      const { article } = this.state;
+      if (article && window.location.hash.includes(article)) {
+        window.location.hash = '';
+      }
       this.setState(previousState => ({
         isArticleVisible: !previousState.isArticleVisible,
         article: '',
@@ -117,6 +121,7 @@ class IndexPage extends React.Component {
                 article,
               }}
               onCloseArticle={this.handleCloseArticle}
+              onOpenArticle={this.handleOpenArticle}
               setWrapperRef={this.setWrapperRef}
             />
             <Footer timeout={timeout} />
