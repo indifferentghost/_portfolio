@@ -43,7 +43,7 @@ const Header = ({ timeout, onOpenArticle }) => (
       <ul>
         {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
         <li>
-          <a href="https://github.com/HTMLGhozt/_portfolio/blob/master/files/Thomas_Dillard-Resume_121018.pdf">
+          <a href="/files/Thomas_Dillard-Resume_121018.pdf">
             Resume
           </a>
         </li>
