@@ -29,7 +29,7 @@ class Main extends React.Component {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
+      body: encodeURI({
         'form-name': form.getAttribute('name'),
         ...this.state,
       }),
