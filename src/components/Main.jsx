@@ -6,6 +6,8 @@ import Carousel from './Carousel';
 import pic01 from '../images/pic01.jpg';
 
 class Main extends React.Component {
+  state = {}
+
   componentDidMount() {
     const { routing } = this;
     window.addEventListener('hashchange', routing);
@@ -16,12 +18,31 @@ class Main extends React.Component {
     window.removeEventListener('hashchange', routing);
   }
 
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const { onCloseArticle } = this.props;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...this.state,
+      }),
+    }).then(onCloseArticle).catch(error => alert(error));
+  }
+
   routing = () => {
     const {
       article,
       onCloseArticle,
       onOpenArticle,
     } = this.props;
+
     if (!window.location.hash.includes(article)) {
       onCloseArticle();
       setTimeout(() => onOpenArticle(window.location.hash.slice(1)), 400);
@@ -98,19 +119,23 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>
-          <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-            <input type="hidden" name="bot-field" />
+          <form onSubmit={this.handleSubmit} name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              Don’t fill this out:{' '}
+              <input name="bot-field" />
+            </p>
             <div className="field half first">
               <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" onChange={this.handleChange} />
             </div>
             <div className="field half">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <input type="text" name="email" id="email" onChange={this.handleChange} />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4" />
+              <textarea name="message" id="message" rows="4" onChange={this.handleChange} />
             </div>
             <ul className="actions">
               <li>
