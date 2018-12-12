@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import Carousel from './Carousel';
 import pic01 from '../images/pic01.jpg';
-// import pic02 from '../images/pic02.jpg';
 
 class Main extends React.Component {
   componentDidMount() {
