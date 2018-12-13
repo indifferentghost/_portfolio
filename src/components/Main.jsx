@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Carousel from './Carousel';
-import pic01 from '../images/pic01.jpg';
+import profile from '../images/profile_image.jpg';
 
 const SocialCard = ({ name, url, logo }) => (
   <li>
@@ -97,29 +97,27 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">About</h2>
-          <span className="image main">
-            <img src={pic01} alt="" />
-          </span>
-          <p>
-            Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
-            aliquam facilisis ante interdum congue. Integer mollis, nisl amet
-            convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
-            magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-            By the way, check out my <a href="#projects">awesome work</a>.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Etiam tristique
-            libero eu nibh porttitor fermentum. Nullam venenatis erat id
-            vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
-            Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae
-            dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in
-            lectus. Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas. In non lorem sit amet elit
-            placerat maximus. Pellentesque aliquam maximus risus, vel sed
-            vehicula.
-          </p>
+          <div className="flexy">
+            <span className="image main">
+              <img src={profile} alt="profile" style={{ width: '200px' }} />
+            </span>
+            <section style={{ padding: '0 10px' }}>
+              <p style={{ display: 'inline-block' }}>
+                An individual, self-starter always improving. Passionate about
+                open source. I have been a student and teacher for web development.
+                At the moment I have been bewitched by React!
+                By the way, check out my <a href="#projects">awesome work</a>.
+              </p>
+              <p>
+                I come from a non-traditional call-center background, but after
+                realizing the impenetrable glass ceiling preventing my progression
+                I changed careers with a little help from Lambda School. I am hungry
+                and passionate about computer science and development of software,
+                and will continue to grow, learn and develop even inspite of blockers
+                in my way.
+              </p>
+            </section>
+          </div>
           {close}
         </article>
 
