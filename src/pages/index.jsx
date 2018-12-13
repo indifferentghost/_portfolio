@@ -20,6 +20,7 @@ class IndexPage extends React.Component {
       this.setState({ loading: '' });
     }, 100);
     document.addEventListener('mousedown', this.handleClickOutside);
+    document.addEventListener('keydown', this.handleEscapeKey);
   }
 
   componentWillUnmount() {
@@ -50,6 +51,18 @@ class IndexPage extends React.Component {
         articleTimeout: !previousState.articleTimeout,
       }));
     }, 350);
+  }
+
+  handleEscapeKey = (event) => {
+    const { isArticleVisible } = this.state;
+    const isEscape = (
+      event.key === 'Escape'
+      || event.key === 'Esc'
+      || event.keyCode === 27
+    );
+    if (isEscape && isArticleVisible) {
+      this.handleCloseArticle();
+    }
   }
 
   handleCloseArticle = () => {
