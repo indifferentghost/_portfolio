@@ -150,7 +150,7 @@ class Main extends React.Component {
             <li>
               <a
                 href="https://medium.com/@thomasdillard"
-                className="icon fa-medium-m"
+                className="icon fa-medium"
                 rel="noopener noreferrer"
                 target="_blank"
               >
