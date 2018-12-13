@@ -1,7 +1,7 @@
 {
   "name": "td_portfolio",
   "description": "Portfolio for Thomas Dillard built on Gatsby.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Thomas Dillard",
   "dependencies": {
     "classnames": "^2.2.6",
@@ -24,7 +24,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "eslint '**/*.js'",
+    "lint": "eslint '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
