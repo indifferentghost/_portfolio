@@ -1,14 +1,9 @@
-// This is temporary just to progress the MVP.
-/* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const NavLink = (page, clickHandler) => (
   <li>
-    <a
-      href={`#${page}`}
-      onClick={() => clickHandler(page)}
-    >
+    <a href={`#${page}`} onClick={() => clickHandler(page)}>
       {page}
     </a>
   </li>
@@ -43,7 +38,11 @@ const Header = ({ timeout, onOpenArticle }) => (
       <ul>
         {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
         <li>
-          <a href="/files/Thomas_Dillard-Resume_121018.pdf">
+          <a
+            href="/files/Thomas_Dillard-Resume_121018.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Resume
           </a>
         </li>

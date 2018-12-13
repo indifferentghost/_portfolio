@@ -18,22 +18,8 @@ class Main extends React.Component {
     window.removeEventListener('hashchange', routing);
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const { onCloseArticle } = this.props;
-  //   fetch('/', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //     body: encodeURI({
-  //       'form-name': form.getAttribute('name'),
-  //       ...this.state,
-  //     }),
-  //   }).then(onCloseArticle).catch(error => alert(error));
+  // handleChange = (e) => {
+  //   this.setState({ [e.target.name]: e.target.value });
   // }
 
   routing = () => {
@@ -45,7 +31,11 @@ class Main extends React.Component {
 
     if (!window.location.hash.includes(article)) {
       onCloseArticle();
-      setTimeout(() => onOpenArticle(window.location.hash.slice(1)), 400);
+      setTimeout(() => {
+        if (window.location.hash) {
+          onOpenArticle(window.location.hash.slice(1));
+        }
+      }, 400);
     }
   }
 
@@ -148,18 +138,43 @@ class Main extends React.Component {
           </form>
           <ul className="icons">
             <li>
-              <a href="https://twitter.com/StudiosDillard" className="icon fa-twitter">
+              <a
+                href="https://twitter.com/StudiosDillard"
+                className="icon fa-twitter"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <span className="label">Twitter</span>
               </a>
             </li>
             <li>
-              <a href="https://blog.usejournal.com/@thomasdillard" className="icon fa-medium">
+              <a
+                href="https://medium.com/@thomasdillard"
+                className="icon fa-medium-m"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <span className="label">Medium</span>
               </a>
             </li>
             <li>
-              <a href="https://github.com/HTMLGhozt" className="icon fa-github">
+              <a
+                href="https://github.com/HTMLGhozt"
+                className="icon fa-github"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <span className="label">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/thomasdillard/"
+                className="icon fa-linkedin"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span className="label">LinkedIn</span>
               </a>
             </li>
           </ul>
