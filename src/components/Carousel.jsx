@@ -27,17 +27,6 @@ class Carousel extends React.Component {
   pages = [
     {
       title: 'LambdaFace.com',
-      copy: `A Lambda School hackathon project.\n
-        The objective was to create a text-based game MVP in 24 hours.
-        I took lead for a team of 5 developers to win the "Teacher's Pick" award.
-        I built core player interaction and created the base of extensible objects.
-        React/Redux is the core of this project.`,
-      link: 'https://lambdaface.com',
-      projectImage: lambdaFace,
-      github: 'https://github.com/Lambda-School-Labs/lambdaface',
-    },
-    {
-      title: 'LS Avengers MUD',
       copy: `A Lambda Labs capstone.\n
         The project was commissioned by Lambda School as a private alumni 
         network inspired by Y Combinator's bookface.
@@ -45,6 +34,17 @@ class Carousel extends React.Component {
         on AWS, styled and provided functionality of notifications.
         The backend utilized Node/Express, Knex, MySQL. The frontend utilized 
         React, Material UI, Axios, React Router, and Auth0.`,
+      link: 'https://lambdaface.com',
+      projectImage: lambdaFace,
+      github: 'https://github.com/Lambda-School-Labs/lambdaface',
+    },
+    {
+      title: 'LS Avengers MUD',
+      copy: `A Lambda School hackathon project.\n
+        The objective was to create a text-based game MVP in 24 hours.
+        I took lead for a team of 5 developers to win the "Teacher's Pick" award.
+        I built core player interaction and created the base of extensible objects.
+        React/Redux is the core of this project.`,
       link: 'https://react-k1owsk.stackblitz.io/',
       projectImage: lambdaMud,
       github: 'https://github.com/LS-Avengers/ls-avengers',
