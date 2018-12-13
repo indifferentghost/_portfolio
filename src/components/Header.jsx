@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NavLink = (page, clickHandler) => (
+const NavLink = ({ page, onOpenArticle }) => (
   <li>
-    <a href={`#${page}`} onClick={() => clickHandler(page)}>
+    <a href={`#${page}`} onClick={() => onOpenArticle(page)}>
       {page}
     </a>
   </li>
@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   faIcons = ['diamond', 'cog', 'heart', 'music']
 
-  clickHandler = () => {
+  logoClickHandler = () => {
     this.setState(previousState => (
       { index: (previousState.index + 1) % this.faIcons.length }
     ));
@@ -28,7 +28,7 @@ class Header extends React.Component {
     return (
       <header id="header" style={timeout ? { display: 'none' } : {}}>
         <div className="logo">
-          <span onClick={() => this.clickHandler()} className={`icon fa-${this.faIcons[index]}`} />
+          <span onClick={() => this.logoClickHandler()} className={`icon fa-${this.faIcons[index]}`} />
         </div>
         <div className="content">
           <div className="inner">
@@ -52,7 +52,9 @@ class Header extends React.Component {
         </div>
         <nav>
           <ul>
-            {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
+            {['about', 'projects', 'contact'].map(page => (
+              <NavLink key={page} {...{ page, onOpenArticle }} />
+            ))}
             <li>
               <a
                 href="/files/Thomas_Dillard-Resume_121018.pdf"
