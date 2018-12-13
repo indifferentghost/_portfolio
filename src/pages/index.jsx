@@ -28,6 +28,7 @@ class IndexPage extends React.Component {
       clearTimeout(this.timeoutId);
     }
     document.removeEventListener('mousedown', this.handleClickOutside);
+    document.removeEventListener('keydown', this.handleEscapeKey);
   }
 
   setWrapperRef = (node) => {
@@ -97,7 +98,9 @@ class IndexPage extends React.Component {
       },
     } = this;
 
-    if (wrapperRef && !wrapperRef.contains(event.target)) {
+    const isScrollbar = event.clientX >= document.documentElement.offsetWidth;
+
+    if (wrapperRef && !wrapperRef.contains(event.target) && !isScrollbar) {
       if (isArticleVisible) {
         handleCloseArticle();
       }

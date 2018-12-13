@@ -51,6 +51,24 @@ class Carousel extends React.Component {
     },
   ]
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleArrowKeys);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleArrowKeys);
+  }
+
+  handleArrowKeys = (event) => {
+    if (event.keyCode === 37) {
+      // left arrow
+      this.handleClick(-1);
+    } else if (event.keyCode === 39) {
+      // right arrow
+      this.handleClick(1);
+    }
+  }
+
   handleClick = (value) => {
     const pagesLength = this.pages.length;
 
