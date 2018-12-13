@@ -5,8 +5,42 @@ import classNames from 'classnames';
 import Carousel from './Carousel';
 import pic01 from '../images/pic01.jpg';
 
+const SocialCard = ({ name, url, logo }) => (
+  <li>
+    <a
+      href={url}
+      className={`icon ${logo}`}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span className="label">{name}</span>
+    </a>
+  </li>
+);
+
 class Main extends React.Component {
-  state = {}
+  socialMediaInfo = [
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/StudiosDillard',
+      logo: 'fa-twitter',
+    },
+    {
+      name: 'Medium',
+      url: 'https://medium.com/@thomasdillard',
+      logo: 'fa-medium',
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/HTMLGhozt',
+      logo: 'fa-github',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/thomasdillard/',
+      logo: 'fa-linkedin',
+    },
+  ]
 
   componentDidMount() {
     const { routing } = this;
@@ -17,10 +51,6 @@ class Main extends React.Component {
     const { routing } = this;
     window.removeEventListener('hashchange', routing);
   }
-
-  // handleChange = (e) => {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
 
   routing = () => {
     const {
@@ -117,15 +147,15 @@ class Main extends React.Component {
             </p>
             <div className="field half first">
               <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" onChange={this.handleChange} />
+              <input type="text" name="name" id="name" />
             </div>
             <div className="field half">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" onChange={this.handleChange} />
+              <input type="text" name="email" id="email" />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4" onChange={this.handleChange} />
+              <textarea name="message" id="message" rows="4" />
             </div>
             <ul className="actions">
               <li>
@@ -137,46 +167,9 @@ class Main extends React.Component {
             </ul>
           </form>
           <ul className="icons">
-            <li>
-              <a
-                href="https://twitter.com/StudiosDillard"
-                className="icon fa-twitter"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span className="label">Twitter</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://medium.com/@thomasdillard"
-                className="icon fa-medium"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span className="label">Medium</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/HTMLGhozt"
-                className="icon fa-github"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span className="label">GitHub</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/thomasdillard/"
-                className="icon fa-linkedin"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span className="label">LinkedIn</span>
-              </a>
-            </li>
+            {this.socialMediaInfo.map(social => (
+              <SocialCard key={social.name} {...social} />
+            ))}
           </ul>
           {close}
         </article>
