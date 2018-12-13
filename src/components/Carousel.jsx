@@ -34,7 +34,7 @@ class Carousel extends React.Component {
         on AWS, styled and provided functionality of notifications.
         The backend utilized Node/Express, Knex, MySQL. The frontend utilized 
         React, Material UI, Axios, React Router, and Auth0.`,
-      link: 'https://lambdaface.com',
+      link: 'http://lambdaface.com',
       projectImage: lambdaFace,
       github: 'https://github.com/Lambda-School-Labs/lambdaface',
     },

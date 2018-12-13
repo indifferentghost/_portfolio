@@ -1,7 +1,7 @@
 {
   "name": "td_portfolio",
   "description": "Portfolio for Thomas Dillard built on Gatsby.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Thomas Dillard",
   "dependencies": {
     "classnames": "^2.2.6",
