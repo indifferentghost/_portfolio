@@ -22,19 +22,19 @@ class Main extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const { onCloseArticle } = this.props;
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeURI({
-        'form-name': form.getAttribute('name'),
-        ...this.state,
-      }),
-    }).then(onCloseArticle).catch(error => alert(error));
-  }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const { onCloseArticle } = this.props;
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  //     body: encodeURI({
+  //       'form-name': form.getAttribute('name'),
+  //       ...this.state,
+  //     }),
+  //   }).then(onCloseArticle).catch(error => alert(error));
+  // }
 
   routing = () => {
     const {
@@ -119,7 +119,7 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>
-          <form onSubmit={this.handleSubmit} name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact" />
             <p hidden>
               Don’t fill this out:{' '}
