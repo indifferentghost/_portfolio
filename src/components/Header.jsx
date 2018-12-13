@@ -9,47 +9,65 @@ const NavLink = (page, clickHandler) => (
   </li>
 );
 
-const Header = ({ timeout, onOpenArticle }) => (
-  <header id="header" style={timeout ? { display: 'none' } : {}}>
-    <div className="logo">
-      <span className="icon fa-diamond" />
-    </div>
-    <div className="content">
-      <div className="inner">
-        <h1>Thomas Dillard</h1>
-        <p>
-          The fully responsive portfolio of Thomas Dillard.{' '}<br />
-          A full stack React developer, involved in{' '}<br />
-          and passionate about Open Source.{' '}<br />
-          <br />
-          a{' '}
-          <a
-            href="https://lambdaschool.com"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Lambda School
-          </a>{' '}
-          alumnus and hype man.
-        </p>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
-        <li>
-          <a
-            href="/files/Thomas_Dillard-Resume_121018.pdf"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Resume
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-);
+class Header extends React.Component {
+  state = {
+    index: 0,
+  }
+
+  faIcons = ['diamond', 'cog', 'heart', 'music']
+
+  clickHandler = () => {
+    this.setState(previousState => (
+      { index: (previousState.index + 1) % this.faIcons.length }
+    ));
+  }
+
+  render() {
+    const { timeout, onOpenArticle } = this.props;
+    const { index } = this.state;
+    return (
+      <header id="header" style={timeout ? { display: 'none' } : {}}>
+        <div className="logo">
+          <span onClick={() => this.clickHandler()} className={`icon fa-${this.faIcons[index]}`} />
+        </div>
+        <div className="content">
+          <div className="inner">
+            <h1>Thomas Dillard</h1>
+            <p>
+              The fully responsive portfolio of Thomas Dillard.{' '}<br />
+              A full stack React developer, involved in{' '}<br />
+              and passionate about Open Source.{' '}<br />
+              <br />
+              a{' '}
+              <a
+                href="https://lambdaschool.com"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Lambda School
+              </a>{' '}
+              alumnus and hype man.
+            </p>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            {['about', 'projects', 'contact'].map(page => NavLink(page, onOpenArticle))}
+            <li>
+              <a
+                href="/files/Thomas_Dillard-Resume_121018.pdf"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Resume
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    );
+  }
+}
 
 Header.propTypes = {
   onOpenArticle: PropTypes.func,
