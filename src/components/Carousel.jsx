@@ -12,9 +12,9 @@ const Page = ({
     <h3>{title}</h3>
     <img style={{ width: '100%' }} src={projectImage} alt="" />
     <p>{copy}</p>
-    {link && <span>View this project live <a href={link}>here</a>.</span>}
+    {link && <span>View this project live <a target="_blank" rel="noopener noreferrer" href={link}>here</a>.</span>}
     <br />
-    {github && <span>See the source code: <a href={github}>github</a>.</span>}
+    {github && <span>See the source code: <a target="_blank" rel="noopener noreferrer" href={github}>github</a>.</span>}
     <br />
   </div>
 );
