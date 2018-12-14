@@ -11,6 +11,7 @@ Based on the [dimension](https://github.com/codebushi/gatsby-starter-dimension) 
 - [ ] Testing
 - [ ] [Frontend checklist](https://frontendchecklist.io/)
 - [ ] Remove Unneeded files
-- [ ] SASS to LESS (preference)
+- [ ] SASS to LESS or other preprocessor
+  - other considerations are CSS-in-JS or JS modules.
 - [ ] Look into TLX or HyperX
 - [ ] Locally Hosted Blog?
