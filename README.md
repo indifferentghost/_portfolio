@@ -1,8 +1,6 @@
 # Portfolio
 The current portfolio for Thomas Dillard.
 
-Currently in v1.0.0
-
 Based on the [dimension](https://github.com/codebushi/gatsby-starter-dimension) design for Gatsby.
 
 ## Todo
