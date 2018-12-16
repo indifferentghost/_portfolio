@@ -57,7 +57,7 @@ class Header extends React.Component {
             ))}
             <li>
               <a
-                href="/files/Thomas_Dillard-Resume_121018.pdf"
+                href="/files/Thomas_Dillard-Resume_121518.pdf"
                 rel="noopener noreferrer"
                 target="_blank"
               >
