@@ -12,9 +12,22 @@ const Page = ({
     <h3>{title}</h3>
     <img style={{ width: '100%' }} src={projectImage} alt="" />
     <p>{copy}</p>
-    {link && <span>View this project live <a target="_blank" rel="noopener noreferrer" href={link}>here</a>.</span>}
+    {link && (
+      <span>
+        View this project live{' '}
+        <a target="_blank" rel="noopener noreferrer" href={link}>
+          here
+        </a>.
+      </span>
+    )}
     <br />
-    {github && <span>See the source code: <a target="_blank" rel="noopener noreferrer" href={github}>github</a>.</span>}
+    {github && (
+      <span>
+        See the source code:{' '}
+        <a target="_blank" rel="noopener noreferrer" href={github}>
+          github
+        </a>.
+      </span>)}
     <br />
   </div>
 );
@@ -60,33 +73,39 @@ class Carousel extends React.Component {
   }
 
   handleArrowKeys = (event) => {
-    if (event.keyCode === 37) {
-      // left arrow
-      this.handleClick(-1);
-    } else if (event.keyCode === 39) {
-      // right arrow
-      this.handleClick(1);
+    const isLeftArrow = event.keyCode === 37;
+    const isRightArrow = event.keyCode === 39;
+
+    if (isLeftArrow) {
+      this.previous();
+      return;
+    }
+    if (isRightArrow) {
+      this.next();
     }
   }
 
-  handleClick = (value) => {
+  previous = () => {
     const pagesLength = this.pages.length;
 
-    this.setState(({ activePage }) => {
-      // eslint-disable-next-line no-param-reassign
-      activePage += value;
-      // If the activePage is between 0 and `pages.length` return activePage.
-      if (activePage >= 0 && activePage < pagesLength) {
-        return { activePage };
-      }
-      // if the active page is below 0 return the highest index.
-      if (activePage < 0) {
+    this.setState((previousState) => {
+      if (previousState.activePage < 0) {
         return { activePage: pagesLength - 1 };
       }
-      // if the active page is above `pages.length` return 0.
-      return { activePage: 0 };
+      return { activePage: previousState.activePage - 1 };
     });
-  };
+  }
+
+  next = () => {
+    const pagesLength = this.pages.length;
+
+    this.setState((previousState) => {
+      if (previousState.activePage >= pagesLength - 1) {
+        return { activePage: 0 };
+      }
+      return { activePage: previousState.activePage + 1 };
+    });
+  }
 
   render() {
     const { activePage } = this.state;
@@ -98,11 +117,20 @@ class Carousel extends React.Component {
           alignItems: 'center',
         }}
       >
-        <span className="arrow arrow-left" onClick={() => this.handleClick(-1)} />
+        <span
+          className="arrow arrow-left"
+          onClick={this.previous}
+        />
         {this.pages.map((page, index) => (
-          <Page key={page.title} {...{ index, active: activePage === index, page }} />
+          <Page
+            key={page.title}
+            {...{ index, active: activePage === index, page }}
+          />
         ))}
-        <span className="arrow arrow-right" onClick={() => this.handleClick(1)} />
+        <span
+          className="arrow arrow-right"
+          onClick={this.next}
+        />
       </div>
     );
   }
