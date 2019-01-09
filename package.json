@@ -38,11 +38,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-default.git"
+    "url": "git+https://github.com/HTMLGhozt/_portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default/issues"
+    "url": "https://github.com/HTMLGhozt/_portfolio/issues"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-default#readme",
+  "homepage": "https://www.thomasdillard.com",
   "main": "gatsby-browser.js"
 }
