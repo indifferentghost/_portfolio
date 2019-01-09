@@ -1,7 +1,10 @@
 /*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Dimension by HTML5 UP
+  html5up.net/dimension | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+  The following modifcations have been made:
+    - various indentation and spacing has been altered for uniformity.
 */
 
 /* Button */
@@ -11,82 +14,64 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
-	@include vendor('appearance', 'none');
-	@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out, color #{_duration(transition)} ease-in-out');
-	background-color: transparent;
-	border-radius: _size(border-radius);
-	border: 0;
-	box-shadow: inset 0 0 0 _size(border-width) _palette(border);
-	color: _palette(fg-bold) !important;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 0.8rem;
-	font-weight: _font(weight);
-	height: _size(element-height);
-	letter-spacing: _font(letter-spacing);
-	line-height: _size(element-height);
-	outline: 0;
-	padding: 0 1.25rem 0 (1.25rem + (_font(letter-spacing) * 0.5));
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-	white-space: nowrap;
+  @include vendor('appearance', 'none');
+  @include vendor('transition', 'background-color #{_duration(transition)} ease-in-out, color #{_duration(transition)} ease-in-out');
+  background-color: transparent;
+  border-radius: _size(border-radius);
+  border: 0;
+  box-shadow: inset 0 0 0 _size(border-width) _palette(border);
+  color: _palette(fg-bold) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: _font(weight);
+  height: _size(element-height);
+  letter-spacing: _font(letter-spacing);
+  line-height: _size(element-height);
+  outline: 0;
+  padding: 0 1.25rem 0 (1.25rem + (_font(letter-spacing) * 0.5));
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 
-	&:hover {
-		background-color: _palette(border-bg);
-	}
+  &:hover {
+    background-color: _palette(border-bg);
+  }
 
-	&:active {
-		background-color: _palette(border-bg-alt);
-	}
+  &:active {
+    background-color: _palette(border-bg-alt);
+  }
 
-	&.icon {
-		&:before {
-			margin-right: 0.5em;
-		}
-	}
+  &.icon {
+    &:before {
+      margin-right: 0.5em;
+    }
+  }
 
-	&.fit {
-		display: block;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
-		width: 100%;
-	}
+  &.fit {
+    display: block;
+    margin: 0 0 (_size(element-margin) * 0.5) 0;
+    width: 100%;
+  }
 
-	&.special {
-		background-color: _palette(fg-bold);
-		color: _palette(bg) !important;
-		font-weight: _font(weight-bold);
-	}
+  &.special {
+    background-color: _palette(fg-bold);
+    color: _palette(bg) !important;
+    font-weight: _font(weight-bold);
+  }
 
-	&.disabled,
-	&:disabled {
-		@include vendor('pointer-events', 'none');
-		cursor: default;
-		opacity: 0.25;
-	}
+  &.disabled,
+  &:disabled {
+    @include vendor('pointer-events', 'none');
+    cursor: default;
+    opacity: 0.25;
+  }
 }
 
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button {
-	line-height: calc(#{_size(element-height)} - 2px);
+  line-height: calc(#{_size(element-height)} - 2px);
 }
-
-.arrow {
-	max-height: 1rem;
-	padding: 1rem; /* Arrow size */
-	box-shadow: 1px -1px 0 1px #ffffff inset;
-	-webkit-box-shadow: 2px -2px #ffffff inset;
-	border: solid transparent;
-	border-width: 0 0 1rem 1rem;
-	transition: 0.2s;
-}
-
-.arrow:hover {
-	box-shadow: 2px -2px 0 2px dimgray inset;
-	-webkit-box-shadow: 4px -4px dimgray inset;
-}
-
-.arrow-right { transform:rotate(225deg) }
-.arrow-left  { transform:rotate(45deg) }

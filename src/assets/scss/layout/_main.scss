@@ -85,9 +85,7 @@
 				}
 			}
 		}
-
 	}
-
 
 	@include breakpoint(small) {
 		article {
@@ -110,6 +108,7 @@
 		}
 	}
 }
+
 .flexy {
 	display: flex;
 	@include breakpoint(xsmall) {
