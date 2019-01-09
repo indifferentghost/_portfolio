@@ -15,17 +15,17 @@
   "plugins": ["babel"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info"] }],
-    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-one-expression-per-line": false,
     "linebreak-style": 0,
-    "import/no-unresolved": 0,
+    "import/no-unresolved": false,
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
-    "jsx-a11y/label-has-for": 0,
-    "react/prop-types": 0,
-    "react/require-default-props": 0,
-    "jsx-a11y/anchor-is-valid": 0,
-    "jsx-a11y/label-has-associated-control": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/label-has-for": false,
+    "react/prop-types": false,
+    "react/require-default-props": false,
+    "jsx-a11y/anchor-is-valid": false,
+    "jsx-a11y/label-has-associated-control": false,
+    "jsx-a11y/click-events-have-key-events": false,
+    "jsx-a11y/no-static-element-interactions": false
   }
 }

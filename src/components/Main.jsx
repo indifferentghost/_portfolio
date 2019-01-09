@@ -18,30 +18,30 @@ const SocialCard = ({ name, url, logo }) => (
   </li>
 );
 
-class Main extends React.Component {
-  socialMediaInfo = [
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/StudiosDillard',
-      logo: 'fa-twitter',
-    },
-    {
-      name: 'Medium',
-      url: 'https://medium.com/@thomasdillard',
-      logo: 'fa-medium',
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com/HTMLGhozt',
-      logo: 'fa-github',
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/thomasdillard/',
-      logo: 'fa-linkedin',
-    },
-  ]
+const socialMediaInfo = [
+  {
+    name: 'Twitter',
+    url: 'https://twitter.com/StudiosDillard',
+    logo: 'fa-twitter',
+  },
+  {
+    name: 'Medium',
+    url: 'https://medium.com/@thomasdillard',
+    logo: 'fa-medium',
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/HTMLGhozt',
+    logo: 'fa-github',
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/thomasdillard/',
+    logo: 'fa-linkedin',
+  },
+];
 
+class Main extends React.Component {
   componentDidMount() {
     const { routing } = this;
     window.addEventListener('hashchange', routing);
@@ -81,7 +81,7 @@ class Main extends React.Component {
     const close = (
       <div
         className="close"
-        onClick={() => onCloseArticle()}
+        onClick={onCloseArticle}
       />
     );
 
@@ -165,7 +165,7 @@ class Main extends React.Component {
             </ul>
           </form>
           <ul className="icons">
-            {this.socialMediaInfo.map(social => (
+            {socialMediaInfo.map(social => (
               <SocialCard key={social.name} {...social} />
             ))}
           </ul>
