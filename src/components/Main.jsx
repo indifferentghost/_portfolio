@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Carousel from './Carousel';
+import { Carousel } from './carousel';
 import profile from '../images/profile_image.jpg';
 
 const SocialCard = ({ name, url, logo }) => (

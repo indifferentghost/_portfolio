@@ -32,8 +32,7 @@ const Layout = props => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: 'A curated portfolio of projects.' },
           ]}
         >
           <html lang="en" />
