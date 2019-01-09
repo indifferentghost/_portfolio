@@ -50,13 +50,7 @@ export class Carousel extends React.Component {
   render() {
     const { activePage } = this.state;
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+      <div className="carousel-container">
         <span
           className="arrow arrow-left"
           onClick={this.previous}

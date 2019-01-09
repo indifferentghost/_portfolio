@@ -5,9 +5,9 @@ const Page = ({
     title, copy, projectImage, link, github,
   },
 }) => (
-  <div style={{ display: !active ? 'none' : '', padding: '0 10px' }}>
+  <div className="carousel-page" style={{ display: !active && 'none' }}>
     <h3>{title}</h3>
-    <img style={{ width: '100%' }} src={projectImage} alt="" />
+    <img className="carousel-image" src={projectImage} alt="" />
     <p>{copy}</p>
     {link && (
       <span>
@@ -24,8 +24,8 @@ const Page = ({
         <a target="_blank" rel="noopener noreferrer" href={github}>
           github
         </a>.
-      </span>)}
-    <br />
+      </span>
+    )}
   </div>
 );
 
