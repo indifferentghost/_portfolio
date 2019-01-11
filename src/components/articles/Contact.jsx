@@ -44,7 +44,6 @@ export const Contact = ({ article, articleTimeout, close }) => (
       active: article === 'contact',
       timeout: articleTimeout,
     })}
-    style={{ display: 'none' }}
   >
     <h2 className="major">Contact</h2>
     <form

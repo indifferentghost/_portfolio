@@ -10,7 +10,6 @@ export const About = ({ article, articleTimeout, close }) => (
       active: article === 'about',
       timeout: articleTimeout,
     })}
-    style={{ display: 'none' }}
   >
     <h2 className="major">About</h2>
     <div className="flexy">

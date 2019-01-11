@@ -10,7 +10,6 @@ export const Projects = ({ article, articleTimeout, close }) => (
       active: article === 'projects',
       timeout: articleTimeout,
     })}
-    style={{ display: 'none' }}
   >
     <h2 className="major">Projects</h2>
     {article === 'projects' && <Carousel />}
