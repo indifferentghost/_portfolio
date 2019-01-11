@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Layout from '../components/layout';
 
 import Header from '../components/Header';
-import Main from '../components/MainContainer';
+import Main, { articleComponents } from '../components/MainContainer';
 import Footer from '../components/Footer';
 
 class IndexPage extends React.Component {
@@ -37,7 +37,7 @@ class IndexPage extends React.Component {
       this.handleCloseArticle();
     }
     setTimeout(() => {
-      if (window.location.hash) {
+      if (window.location.hash && window.location.hash.slice(1) in articleComponents) {
         if (!article || !window.location.hash.includes(article)) {
           this.handleOpenArticle(window.location.hash.slice(1));
         }
@@ -100,15 +100,18 @@ class IndexPage extends React.Component {
           })}
         >
           <div id="wrapper">
-            {!timeout && <Header onOpenArticle={this.handleOpenArticle} /> }
-            {timeout && (
+            {!timeout ? (
+              <React.Fragment>
+                <Header onOpenArticle={this.handleOpenArticle} />
+                <Footer />
+              </React.Fragment>
+            ) : (
               <Main
                 {...{ isArticleVisible, articleTimeout, article }}
                 onCloseArticle={this.handleCloseArticle}
                 onOpenArticle={this.handleOpenArticle}
               />
             )}
-            {!timeout && <Footer />}
           </div>
           <div id="bg" />
         </div>

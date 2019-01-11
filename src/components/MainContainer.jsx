@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Contact, Projects, About } from './articles';
 
-class Main extends React.Component {
-  articleComponents = {
-    about: About,
-    projects: Projects,
-    contact: Contact,
-  }
+export const articleComponents = {
+  about: About,
+  projects: Projects,
+  contact: Contact,
+};
 
+class Main extends React.Component {
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
     document.addEventListener('keydown', this.handleEscapeKey);
@@ -44,9 +44,8 @@ class Main extends React.Component {
   }
 
   getArticleComponent = () => {
-    const { article, onCloseArticle } = this.props;
-    const ArticleComponent = this.articleComponents[article] || null;
-    if (!ArticleComponent) setTimeout(onCloseArticle, 100);
+    const { article } = this.props;
+    const ArticleComponent = articleComponents[article] || null;
     return ArticleComponent;
   }
 
@@ -65,7 +64,7 @@ class Main extends React.Component {
         ref={(ref) => { this.containerRef = ref; }}
         id="main"
       >
-        {ArticleRender && <ArticleRender {...{ article, articleTimeout, close }} />}
+        <ArticleRender {...{ article, articleTimeout, close }} />
       </div>
     );
   }
