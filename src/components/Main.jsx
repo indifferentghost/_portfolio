@@ -167,7 +167,7 @@ class Main extends React.Component {
             </ul>
           </form>
           <ul className="icons">
-            {socialMediaInfo.map((social) => (
+            {socialMediaInfo.map(social => (
               <SocialCard key={social.name} {...social} />
             ))}
           </ul>
