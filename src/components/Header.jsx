@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const faIcons = ['diamond', 'cog', 'heart', 'music'];
+
 const NavLink = ({ page, onOpenArticle }) => (
   <li>
     <a href={`#${page}`} onClick={() => onOpenArticle(page)}>
@@ -12,25 +14,27 @@ const NavLink = ({ page, onOpenArticle }) => (
 class Header extends React.Component {
   state = {
     index: 0,
-  };
+  }
 
-  faIcons = ['diamond', 'cog', 'heart', 'music'];
+  static propTypes = {
+    onOpenArticle: PropTypes.func,
+  }
 
   logoClickHandler = () => {
     this.setState(previousState => ({
-      index: (previousState.index + 1) % this.faIcons.length,
+      index: (previousState.index + 1) % faIcons.length,
     }));
   };
 
   render() {
-    const { timeout, onOpenArticle } = this.props;
+    const { onOpenArticle } = this.props;
     const { index } = this.state;
     return (
-      <header id="header" style={timeout ? { display: 'none' } : {}}>
+      <header id="header">
         <div className="logo">
           <span
             onClick={() => this.logoClickHandler()}
-            className={`icon fa-${this.faIcons[index]}`}
+            className={`icon fa-${faIcons[index]}`}
           />
         </div>
         <div className="content">
@@ -72,10 +76,5 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  onOpenArticle: PropTypes.func,
-  timeout: PropTypes.bool,
-};
 
 export default Header;
