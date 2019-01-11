@@ -43,13 +43,11 @@ const socialMediaInfo = [
 
 class Main extends React.Component {
   componentDidMount() {
-    const { routing } = this;
-    window.addEventListener('hashchange', routing);
+    window.addEventListener('hashchange', this.routing);
   }
 
   componentWillUnmount() {
-    const { routing } = this;
-    window.removeEventListener('hashchange', routing);
+    window.removeEventListener('hashchange', this.routing);
   }
 
   routing = () => {

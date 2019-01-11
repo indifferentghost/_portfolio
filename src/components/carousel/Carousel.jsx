@@ -17,12 +17,19 @@ export class Carousel extends React.Component {
 
   componentDidMount() {
     this.checkSmallScreen();
+    this.toggleSwipeEvents();
 
     window.addEventListener('resize', this.checkSmallScreen);
     document.addEventListener('keydown', this.handleArrowKeys);
   }
 
+  componentDidUpdate() {
+    this.toggleSwipeEvents();
+  }
+
   componentWillUnmount() {
+    this.toggleSwipeEvents();
+
     window.removeEventListener('resize', this.checkSmallScreen);
     document.removeEventListener('keydown', this.handleArrowKeys);
   }
@@ -47,6 +54,21 @@ export class Carousel extends React.Component {
 
     if (isLeftArrow) this.previous();
     if (isRightArrow) this.next();
+  }
+
+  toggleSwipeEvents = () => {
+    const projectContainer = document.getElementById('projects');
+    const { smallScreen } = this.state;
+
+    if (smallScreen && !this.swipeEvents) {
+      projectContainer.addEventListener('touchstart', this.handleSwipeStart);
+      projectContainer.addEventListener('touchmove', this.handleSwipeMove);
+      projectContainer.addEventListener('touchend', this.handleSwipeEnd);
+    } else if (!smallScreen && this.swipeEvents) {
+      projectContainer.removeEventListener('touchstart', this.handleSwipeStart);
+      projectContainer.removeEventListener('touchmove', this.handleSwipeMove);
+      projectContainer.removeEventListener('touchend', this.handleSwipeEnd);
+    }
   }
 
   handleSwipeStart = (event) => {
@@ -100,14 +122,7 @@ export class Carousel extends React.Component {
     const { activePage, smallScreen } = this.state;
 
     return (
-      <div
-        className="carousel-container"
-        {...{
-          onTouchStart: smallScreen ? this.handleSwipeStart : undefined,
-          onTouchEnd: smallScreen ? this.handleSwipeEnd : undefined,
-          onTouchMove: smallScreen ? this.handleSwipeMove : undefined,
-        }}
-      >
+      <div className="carousel-container">
         {!smallScreen && (
           <span className="arrow arrow-left" onClick={this.previous} />
         )}
