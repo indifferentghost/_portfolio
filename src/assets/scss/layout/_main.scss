@@ -5,6 +5,10 @@
 
   The following modifcations have been made:
     - various indentation and spacing has been altered for uniformity.
+    - #main display has been changed from 'none' to 'flex'.
+    - .timeout has been significantly altered.
+    - .close has been from article to #main and significantly altered.
+    - .flexy was added to interact with images at different sizes.
 */
 
 /* Main */
@@ -19,7 +23,7 @@
   position: relative;
   max-width: 100%;
   z-index: 3;
-  display: none;
+  display: flex;
 
   article {
     @include vendor('transform', 'translateY(0.25rem)');
@@ -35,10 +39,6 @@
     border-radius: _size(border-radius);
     opacity: 0;
 
-    &.timeout {
-      display: none;
-    }
-
     &.active.timeout {
       @include vendor('transform', 'translateY(0)');
       opacity: 1;
@@ -47,45 +47,45 @@
     &.active {
       display: block !important;
     }
+  }
 
-    .close {
+  .close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    text-indent: 4rem;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:before {
+      @include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
+      content: '';
       display: block;
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 4rem;
-      height: 4rem;
-      cursor: pointer;
-      text-indent: 4rem;
-      overflow: hidden;
-      white-space: nowrap;
+      top: 0.75rem;
+      left: 0.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 100%;
+      background-position: center;
+      background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(border)}; stroke-width: 1; }</style><line x1="2" y1="2" x2="18" y2="18" /><line x1="18" y1="2" x2="2" y2="18" /></svg>');
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+    }
 
+    &:hover {
       &:before {
-        @include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0.75rem;
-        left: 0.75rem;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 100%;
-        background-position: center;
-        background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(border)}; stroke-width: 1; }</style><line x1="2" y1="2" x2="18" y2="18" /><line x1="18" y1="2" x2="2" y2="18" /></svg>');
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
+        background-color: _palette(border-bg);
       }
+    }
 
-      &:hover {
-        &:before {
-          background-color: _palette(border-bg);
-        }
-      }
-
-      &:active {
-        &:before {
-          background-color: _palette(border-bg-alt);
-        }
+    &:active {
+      &:before {
+        background-color: _palette(border-bg-alt);
       }
     }
   }

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Layout from '../components/layout';
 
 import Header from '../components/Header';
-import Main from '../components/Main';
+import Main from '../components/MainContainer';
 import Footer from '../components/Footer';
 
 class IndexPage extends React.Component {
@@ -78,7 +78,7 @@ class IndexPage extends React.Component {
 
     setTimeout(() => {
       const { article } = this.state;
-      if (article && window.location.hash.includes(article)) {
+      if (article === '' || (article && window.location.hash.includes(article))) {
         window.location.hash = '';
       }
       this.setState(previousState => ({
@@ -123,19 +123,24 @@ class IndexPage extends React.Component {
           })}
         >
           <div id="wrapper">
-            <Header onOpenArticle={this.handleOpenArticle} timeout={timeout} />
-            <Main
-              {...{
-                isArticleVisible,
-                timeout,
-                articleTimeout,
-                article,
-              }}
-              onCloseArticle={this.handleCloseArticle}
-              onOpenArticle={this.handleOpenArticle}
-              setWrapperRef={this.setWrapperRef}
-            />
-            <Footer timeout={timeout} />
+            {!timeout
+              ? (
+                <React.Fragment>
+                  <Header onOpenArticle={this.handleOpenArticle} />
+                  <Footer />
+                </React.Fragment>
+              ) : (
+                <Main
+                  {...{
+                    isArticleVisible,
+                    articleTimeout,
+                    article,
+                  }}
+                  onCloseArticle={this.handleCloseArticle}
+                  onOpenArticle={this.handleOpenArticle}
+                  setWrapperRef={this.setWrapperRef}
+                />
+              )}
           </div>
           <div id="bg" />
         </div>
