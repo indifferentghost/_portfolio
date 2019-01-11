@@ -14,9 +14,9 @@ export class Carousel extends React.Component {
       x: 0,
       y: 0,
     },
-  }
+  };
 
-  swipeCallback = null
+  swipeCallback = null;
 
   componentDidMount() {
     this.checkSmallScreen();
@@ -39,17 +39,18 @@ export class Carousel extends React.Component {
 
   previous = () => {
     this.setState(previousState => ({
-      activePage: previousState.activePage < 1
-        ? pages.length - 1
-        : previousState.activePage - 1,
+      activePage:
+        previousState.activePage < 1
+          ? pages.length - 1
+          : previousState.activePage - 1,
     }));
-  }
+  };
 
   next = () => {
     this.setState(previousState => ({
       activePage: (previousState.activePage + 1) % pages.length,
     }));
-  }
+  };
 
   handleArrowKeys = (event) => {
     const isLeftArrow = event.keyCode === 37;
@@ -57,7 +58,7 @@ export class Carousel extends React.Component {
 
     if (isLeftArrow) this.previous();
     if (isRightArrow) this.next();
-  }
+  };
 
   toggleSwipeEvents = () => {
     const projectContainer = document.getElementById('projects');
@@ -72,13 +73,13 @@ export class Carousel extends React.Component {
       projectContainer.removeEventListener('touchmove', this.handleSwipeMove);
       projectContainer.removeEventListener('touchend', this.handleSwipeEnd);
     }
-  }
+  };
 
   handleSwipeStart = (event) => {
     const { screenX: x, screenY: y } = event.touches[0];
 
     this.setState({ swipeStart: { x, y } });
-  }
+  };
 
   handleSwipeMove = (event) => {
     if (typeof this.swipeCallback !== 'function') {
@@ -87,16 +88,13 @@ export class Carousel extends React.Component {
 
       const swipedRight = x - minX > swipeStart.x;
       const swipedLeft = x + minX < swipeStart.x;
-      const notHorizontal = y < swipeStart.y + maxY
-        && swipeStart.y > y - maxY;
+      const notHorizontal = y < swipeStart.y + maxY && swipeStart.y > y - maxY;
 
       if ((swipedRight || swipedLeft) && notHorizontal) {
-        this.swipeCallback = swipedRight
-          ? this.next
-          : this.previous;
+        this.swipeCallback = swipedRight ? this.next : this.previous;
       }
     }
-  }
+  };
 
   handleSwipeEnd = (event) => {
     if (typeof this.swipeCallback === 'function') {
@@ -104,7 +102,7 @@ export class Carousel extends React.Component {
       this.swipeCallback();
       this.swipeCallback = null;
     }
-  }
+  };
 
   checkSmallScreen = () => {
     const { smallScreen } = this.state;
@@ -116,7 +114,7 @@ export class Carousel extends React.Component {
     } else if (window.innerWidth <= 600 && smallScreen === false) {
       this.setState({ smallScreen: true });
     }
-  }
+  };
 
   render() {
     const { activePage, smallScreen } = this.state;

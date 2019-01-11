@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Page = ({
-  active, page: {
+  active,
+  page: {
     title, copy, projectImage, link, github,
   },
 }) => (
@@ -14,7 +15,8 @@ const Page = ({
         View this project live{' '}
         <a target="_blank" rel="noopener noreferrer" href={link}>
           here
-        </a>.
+        </a>
+        .
       </span>
     )}
     <br />
@@ -23,7 +25,8 @@ const Page = ({
         See the source code:{' '}
         <a target="_blank" rel="noopener noreferrer" href={github}>
           github
-        </a>.
+        </a>
+        .
       </span>
     )}
   </div>
