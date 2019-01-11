@@ -18,90 +18,67 @@ class IndexPage extends React.Component {
   componentDidMount() {
     this.timeoutId = setTimeout(() => {
       this.setState({ loading: '' });
+      this.routing();
     }, 100);
-    document.addEventListener('mousedown', this.handleClickOutside);
-    document.addEventListener('keydown', this.handleEscapeKey);
+    window.addEventListener('hashchange', this.routing);
   }
 
   componentWillUnmount() {
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
     }
-    document.removeEventListener('mousedown', this.handleClickOutside);
-    document.removeEventListener('keydown', this.handleEscapeKey);
+    window.removeEventListener('hashchange', this.routing);
   }
 
-  setWrapperRef = (node) => {
-    this.wrapperRef = node;
-  };
+  routing = () => {
+    const { article } = this.state;
+
+    if (article && !window.location.hash.includes(article)) {
+      this.handleCloseArticle();
+    }
+    setTimeout(() => {
+      if (window.location.hash) {
+        if (!article || !window.location.hash.includes(article)) {
+          this.handleOpenArticle(window.location.hash.slice(1));
+        }
+      }
+    }, 400);
+  }
 
   handleOpenArticle = (article) => {
-    this.setState(previousState => ({
-      isArticleVisible: !previousState.isArticleVisible,
+    this.setState({
+      isArticleVisible: true,
       article,
-    }));
+    });
 
     setTimeout(() => {
-      this.setState(previousState => ({
-        timeout: !previousState.timeout,
-      }));
+      this.setState({ timeout: true });
     }, 325);
 
     setTimeout(() => {
-      this.setState(previousState => ({
-        articleTimeout: !previousState.articleTimeout,
-      }));
+      this.setState({ articleTimeout: true });
     }, 350);
   };
 
-  handleEscapeKey = (event) => {
-    const { isArticleVisible } = this.state;
-    const isEscape = event.key === 'Escape'
-      || event.key === 'Esc'
-      || event.keyCode === 27;
-
-    if (isEscape && isArticleVisible) {
-      this.handleCloseArticle();
-    }
-  };
-
   handleCloseArticle = () => {
-    this.setState(previousState => ({
-      articleTimeout: !previousState.articleTimeout,
-    }));
+    this.setState({ articleTimeout: false });
 
     setTimeout(() => {
-      this.setState(previousState => ({
-        timeout: !previousState.timeout,
-      }));
+      this.setState({ timeout: false });
     }, 325);
 
     setTimeout(() => {
       const { article } = this.state;
       if (article === '' || (article && window.location.hash.includes(article))) {
-        window.location.hash = '';
+        window.history.pushState(
+          {}, document.title, window.location.pathname + window.location.search,
+        );
       }
-      this.setState(previousState => ({
-        isArticleVisible: !previousState.isArticleVisible,
+      this.setState({
+        isArticleVisible: false,
         article: '',
-      }));
+      });
     }, 350);
-  };
-
-  handleClickOutside = (event) => {
-    const {
-      wrapperRef,
-      handleCloseArticle,
-      state: { isArticleVisible },
-    } = this;
-
-    const isScrollbar = event.clientX >= document.documentElement.offsetWidth;
-
-    if (wrapperRef && !wrapperRef.contains(event.target) && !isScrollbar) {
-      if (isArticleVisible) {
-        handleCloseArticle();
-      }
-    }
   };
 
   render() {
@@ -123,24 +100,15 @@ class IndexPage extends React.Component {
           })}
         >
           <div id="wrapper">
-            {!timeout
-              ? (
-                <React.Fragment>
-                  <Header onOpenArticle={this.handleOpenArticle} />
-                  <Footer />
-                </React.Fragment>
-              ) : (
-                <Main
-                  {...{
-                    isArticleVisible,
-                    articleTimeout,
-                    article,
-                  }}
-                  onCloseArticle={this.handleCloseArticle}
-                  onOpenArticle={this.handleOpenArticle}
-                  setWrapperRef={this.setWrapperRef}
-                />
-              )}
+            {!timeout && <Header onOpenArticle={this.handleOpenArticle} /> }
+            {timeout && (
+              <Main
+                {...{ isArticleVisible, articleTimeout, article }}
+                onCloseArticle={this.handleCloseArticle}
+                onOpenArticle={this.handleOpenArticle}
+              />
+            )}
+            {!timeout && <Footer />}
           </div>
           <div id="bg" />
         </div>

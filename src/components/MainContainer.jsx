@@ -4,45 +4,68 @@ import PropTypes from 'prop-types';
 import { Contact, Projects, About } from './articles';
 
 class Main extends React.Component {
+  articleComponents = {
+    about: About,
+    projects: Projects,
+    contact: Contact,
+  }
+
   componentDidMount() {
-    window.addEventListener('hashchange', this.routing);
+    document.addEventListener('mousedown', this.handleClickOutside);
+    document.addEventListener('keydown', this.handleEscapeKey);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('hashchange', this.routing);
+    document.removeEventListener('mousedown', this.handleClickOutside);
+    document.removeEventListener('keydown', this.handleEscapeKey);
   }
 
-  routing = () => {
-    const { article, onCloseArticle, onOpenArticle } = this.props;
+  handleEscapeKey = (event) => {
+    const { isArticleVisible, onCloseArticle } = this.props;
+    const isEscape = event.key === 'Escape'
+      || event.key === 'Esc'
+      || event.keyCode === 27;
 
-    if (!window.location.hash.includes(article)) {
+    if (isEscape && isArticleVisible) {
       onCloseArticle();
-      setTimeout(() => {
-        if (window.location.hash) {
-          onOpenArticle(window.location.hash.slice(1));
-        }
-      }, 400);
     }
-  };
+  }
+
+  handleClickOutside = (event) => {
+    const { isArticleVisible, onCloseArticle } = this.props;
+
+    const isScrollbar = event.clientX >= document.documentElement.offsetWidth;
+
+    if (this.containerRef && !this.containerRef.contains(event.target) && !isScrollbar) {
+      if (isArticleVisible) {
+        onCloseArticle();
+      }
+    }
+  }
+
+  getArticleComponent = () => {
+    const { article, onCloseArticle } = this.props;
+    const ArticleComponent = this.articleComponents[article] || null;
+    if (!ArticleComponent) setTimeout(onCloseArticle, 100);
+    return ArticleComponent;
+  }
 
   render() {
     const {
       onCloseArticle,
-      setWrapperRef,
       article,
       articleTimeout,
     } = this.props;
 
-    const close = <div className="close" onClick={onCloseArticle} />;
+    const ArticleRender = this.getArticleComponent();
 
+    const close = <div className="close" onClick={onCloseArticle} />;
     return (
       <div
-        ref={setWrapperRef}
+        ref={(ref) => { this.containerRef = ref; }}
         id="main"
       >
-        {article === 'about' && <About {...{ article, articleTimeout, close }} />}
-        {article === 'projects' && <Projects {...{ article, articleTimeout, close }} />}
-        {article === 'contact' && <Contact {...{ article, articleTimeout, close }} />}
+        {ArticleRender && <ArticleRender {...{ article, articleTimeout, close }} />}
       </div>
     );
   }
@@ -52,7 +75,6 @@ Main.propTypes = {
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
-  setWrapperRef: PropTypes.func.isRequired,
 };
 
 export default Main;
