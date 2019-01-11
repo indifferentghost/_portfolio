@@ -3,6 +3,9 @@ import React from 'react';
 import Page from './Page';
 import pages from './content';
 
+const minX = 20; // min x swipe for horizontal swipe
+const maxY = 50; // max y difference for horizontal swipe
+
 export class Carousel extends React.Component {
   state = {
     activePage: 0,
@@ -78,12 +81,9 @@ export class Carousel extends React.Component {
   }
 
   handleSwipeMove = (event) => {
-    const { screenX: x, screenY: y } = event.touches[0];
-    const { swipeStart } = this.state;
-
     if (typeof this.swipeCallback !== 'function') {
-      const minX = 20; // min x swipe for horizontal swipe
-      const maxY = 50; // max y difference for horizontal swipe
+      const { screenX: x, screenY: y } = event.touches[0];
+      const { swipeStart } = this.state;
 
       const swipedRight = x - minX > swipeStart.x;
       const swipedLeft = x + minX < swipeStart.x;
