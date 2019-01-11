@@ -33,7 +33,7 @@ class IndexPage extends React.Component {
 
   setWrapperRef = (node) => {
     this.wrapperRef = node;
-  }
+  };
 
   handleOpenArticle = (article) => {
     this.setState(previousState => ({
@@ -52,19 +52,18 @@ class IndexPage extends React.Component {
         articleTimeout: !previousState.articleTimeout,
       }));
     }, 350);
-  }
+  };
 
   handleEscapeKey = (event) => {
     const { isArticleVisible } = this.state;
-    const isEscape = (
-      event.key === 'Escape'
+    const isEscape = event.key === 'Escape'
       || event.key === 'Esc'
-      || event.keyCode === 27
-    );
+      || event.keyCode === 27;
+
     if (isEscape && isArticleVisible) {
       this.handleCloseArticle();
     }
-  }
+  };
 
   handleCloseArticle = () => {
     this.setState(previousState => ({
@@ -87,15 +86,13 @@ class IndexPage extends React.Component {
         article: '',
       }));
     }, 350);
-  }
+  };
 
   handleClickOutside = (event) => {
     const {
       wrapperRef,
       handleCloseArticle,
-      state: {
-        isArticleVisible,
-      },
+      state: { isArticleVisible },
     } = this;
 
     const isScrollbar = event.clientX >= document.documentElement.offsetWidth;
@@ -105,7 +102,7 @@ class IndexPage extends React.Component {
         handleCloseArticle();
       }
     }
-  }
+  };
 
   render() {
     const { location } = this.props;
@@ -121,14 +118,12 @@ class IndexPage extends React.Component {
       <Layout location={location}>
         <div
           className={classNames('body', {
-            loading, 'is-article-visible': isArticleVisible,
+            loading,
+            'is-article-visible': isArticleVisible,
           })}
         >
           <div id="wrapper">
-            <Header
-              onOpenArticle={this.handleOpenArticle}
-              timeout={timeout}
-            />
+            <Header onOpenArticle={this.handleOpenArticle} timeout={timeout} />
             <Main
               {...{
                 isArticleVisible,

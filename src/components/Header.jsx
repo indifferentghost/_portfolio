@@ -12,15 +12,15 @@ const NavLink = ({ page, onOpenArticle }) => (
 class Header extends React.Component {
   state = {
     index: 0,
-  }
+  };
 
-  faIcons = ['diamond', 'cog', 'heart', 'music']
+  faIcons = ['diamond', 'cog', 'heart', 'music'];
 
   logoClickHandler = () => {
-    this.setState(previousState => (
-      { index: (previousState.index + 1) % this.faIcons.length }
-    ));
-  }
+    this.setState(previousState => ({
+      index: (previousState.index + 1) % this.faIcons.length,
+    }));
+  };
 
   render() {
     const { timeout, onOpenArticle } = this.props;
@@ -28,17 +28,19 @@ class Header extends React.Component {
     return (
       <header id="header" style={timeout ? { display: 'none' } : {}}>
         <div className="logo">
-          <span onClick={() => this.logoClickHandler()} className={`icon fa-${this.faIcons[index]}`} />
+          <span
+            onClick={() => this.logoClickHandler()}
+            className={`icon fa-${this.faIcons[index]}`}
+          />
         </div>
         <div className="content">
           <div className="inner">
             <h1>Thomas Dillard</h1>
             <p>
-              The fully responsive portfolio of Thomas Dillard.{' '}<br />
-              A full stack React developer, involved in{' '}<br />
-              and passionate about Open Source.{' '}<br />
-              <br />
-              a{' '}
+              The fully responsive portfolio of Thomas Dillard. <br />A full
+              stack React developer, involved in <br />
+              and passionate about Open Source. <br />
+              <br />a{' '}
               <a
                 href="https://lambdaschool.com"
                 rel="noopener noreferrer"
