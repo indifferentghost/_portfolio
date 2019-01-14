@@ -44,15 +44,6 @@ class Header extends React.Component {
               The fully responsive portfolio of Thomas Dillard. <br />A full
               stack React developer, involved in <br />
               and passionate about Open Source. <br />
-              <br />a{' '}
-              <a
-                href="https://lambdaschool.com"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Lambda School
-              </a>{' '}
-              alumnus and hype man.
             </p>
           </div>
         </div>
