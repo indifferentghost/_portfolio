@@ -23,10 +23,6 @@
     "jsx-a11y/no-static-element-interactions": false,
     "linebreak-style": 0,
     "no-console": [ "error", { "allow": [ "warn", "error", "info" ] } ],
-    "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true } ],
-    "react/jsx-one-expression-per-line": false,
-    "react/prefer-stateless-function": [ 2, { "ignorePureComponents": true } ],
-    "react/prop-types": false,
-    "react/require-default-props": false
+    "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true } ]
   }
 }

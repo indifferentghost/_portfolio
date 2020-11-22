@@ -1,40 +1,27 @@
 {
   "name": "td_portfolio",
-  "description": "Portfolio for Thomas Dillard built on Gatsby.",
-  "version": "1.0.2",
+  "description": "Portfolio for Thomas Dillard built on 11ty.",
+  "version": "2.0.0",
   "author": "Thomas Dillard",
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "gatsby": "^2.0.0",
-    "gatsby-plugin-manifest": "^2.0.2",
-    "gatsby-plugin-offline": "^2.0.5",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sass": "^2.0.1",
-    "node-sass": "^4.9.3",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.0"
-  },
   "keywords": [
     "gatsby",
     "porfolio"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "npx @11ty/eleventy ./src",
+    "serve": "npx @11ty/eleventy --serve ./src",
     "lint": "eslint '**/*.js'",
     "test": "npm run lint"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
     "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-jsx-a11y": "^6.1.2"
   },
   "repository": {
     "type": "git",

@@ -7,4 +7,7 @@ yarn.lock
 
 # Build directory
 /public
+_site/
+
+# Mac
 .DS_Store
