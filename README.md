@@ -16,3 +16,4 @@ The current portfolio for Thomas Dillard.
 - [ ] [Comments](https://staticman.net)
 - [ ] Breadcrumbs
 - [ ] Sitemaps
+- [ ] footnotes
