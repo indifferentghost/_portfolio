@@ -1,28 +1,35 @@
 {
-  "extends": [ "airbnb" ],
-  "env": {
-    "es6": true,
-    "browser": true
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "plugins": [ "babel" ],
-  "rules": {
-    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
-    "import/prefer-default-export": false,
-    "jsx-a11y/anchor-is-valid": false,
-    "jsx-a11y/click-events-have-key-events": false,
-    "jsx-a11y/label-has-associated-control": false,
-    "jsx-a11y/label-has-for": false,
-    "jsx-a11y/no-static-element-interactions": false,
-    "linebreak-style": 0,
-    "no-console": [ "error", { "allow": [ "warn", "error", "info" ] } ],
-    "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true } ]
-  }
+	"extends": ["airbnb"],
+	"env": {
+		"es6": true,
+		"browser": true
+	},
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 12
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["./"],
+				"moduleDirectory": ["node_modules", "./"]
+			}
+		}
+	},
+	"rules": {
+		"arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+		"import/prefer-default-export": 0,
+		"jsx-a11y/anchor-is-valid": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
+		"jsx-a11y/label-has-associated-control": 0,
+		"jsx-a11y/label-has-for": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
+		"linebreak-style": 0,
+		"no-console": ["error", { "allow": ["warn", "error", "info"] }],
+		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+		"no-tabs": 0,
+		"indent": ["error", "tab"],
+		"import/no-unresolved": [2, { "commonjs": true }]
+	}
 }

@@ -1,5 +1,9 @@
-module.exports = {
-  dir: {
-    input: './src'
+module.exports = function(eleventyConfig) {
+	eleventyConfig.addFilter('parseDate', (value) => {
+		return value.toLocaleDateString();
+	});
+
+  return {
+    dir: { input: './src' }
   }
 };
