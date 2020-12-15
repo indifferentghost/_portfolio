@@ -1,15 +1,18 @@
 # Portfolio
 The current portfolio for Thomas Dillard.
 
-Based on the [dimension](https://github.com/codebushi/gatsby-starter-dimension) design for Gatsby.
-
 ## Todo
-- [x] Favicon
-- [ ] Compress images
+- [ ] Favicon
+- [ ] Collection to display post list
+- [ ] Icon SVG sprite sheet [css.gg](css.gg)
+- [ ] Compress Images at build time
 - [ ] Testing
 - [ ] [Frontend checklist](https://frontendchecklist.io/)
-- [ ] Remove Unneeded files
-- [ ] SASS to LESS or other preprocessor
-  - other considerations are CSS-in-JS or JS modules.
-- [ ] Look into TLX or HyperX
-- [ ] Locally Hosted Blog?
+	- dns-prefetch
+	- preconnect
+- [ ] Two Way Linking
+- [ ] Edit on GitHub
+- [ ] Web Mentions
+- [ ] [Comments](https://staticman.net)
+- [ ] Breadcrumbs
+- [ ] Sitemaps

@@ -1,1 +1,12 @@
 {% extends 'layouts/default.njk' %}
+
+{% block content %}
+<article>
+	<header>
+		<h1>{{ title }}</h1>
+		<p><time datetime="{{ page.date }}">{{ page.date | parseDate }}</time></p>
+	</header>
+
+	{{ content | safe }}
+</article>
+{% endblock content %}

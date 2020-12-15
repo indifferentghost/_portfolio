@@ -2,6 +2,7 @@
 <html lang="en">
 {% include 'partials/head.njk' %}
 <body>
-	{{ content | safe }}
+	{% block content %}
+  {% endblock content %}
 </body>
 </html>
